@@ -1,0 +1,27 @@
+<% provide(:title, "ホーム") %>
+<link href="https://fonts.googleapis.com/css?family=M+PLUS+1p" rel="stylesheet">
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="text-center">
+                    <img src="assets/top_image1">
+                    <p>
+                        <span>Welcome Naganocake</span><br>
+                        このサイトは、ケーキ販売のECサイトになります。<br>
+                        会員でない方も商品の閲覧はできますが、<br>
+                        購入には会員登録が必要になります。<br>
+                    </p>
+                </div>
+                
+                <h2>新着商品</h2>
+                <% @items.first(5). each do |item| %>
+                   <%# =render "item_each", item: item %>
+                <% end %>
+                <div class="col-xs-12">
+                    <%= link_to "全ての商品を見る", items_path %>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
