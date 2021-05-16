@@ -24,9 +24,21 @@ end
     password: "adminadmin"
   )
 
+Genre.create!(
+   name: "ホールケーキ",
+)
+
+Genre.create!(
+   name: "カットケーキ",
+)
+
+Genre.create!(
+   name: "マカロン",
+)
+
 15.times do |n|
   Item.create!(
-    genre_id: 0,
+    genre_id: 1,
     name: "いちごのショートケーキ（ホール）#{n + 1}",
     introduction: "栃⽊県産のとちおとめを贅沢に使⽤しています。",
     price: 2750,
@@ -37,7 +49,7 @@ end
 
 5.times do |n|
   Item.create!(
-    genre_id: 0,
+    genre_id: 1,
     name: "ガトーショコラ#{n + 1}",
     introduction: "こだわったチョコレートを贅沢に使⽤しています。",
     price: 800,
