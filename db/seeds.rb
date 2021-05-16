@@ -23,3 +23,23 @@ end
     email: "admin@admin",
     password: "adminadmin"
   )
+
+  15.times do |n|
+    Item.create!(
+      genle_id: 0,
+      name: "いちごのショートケーキ（ホール）#{n + 1}",
+      introduction: "栃⽊県産のとちおとめを贅沢に使⽤しています。",
+      price: 2750,
+      is_active: TRUE,
+      image: open("./app/assets/images/ホールケーキ.jpg")
+    )
+
+  5.times do |n|
+    Item.create!(
+      genle_id: 0,
+      name: "ガトーショコラ#{n + 1}",
+      introduction: "こだわったチョコレートを贅沢に使⽤しています。",
+      price: 800,
+      is_active: FALSE,
+      image: open("./app/assets/images/ガトーショコラ.jpg")
+    )
