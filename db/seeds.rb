@@ -5,3 +5,21 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+20.times do |n|
+    Customer.create!(
+      email: "test#{n + 1}@test.com",
+      first_name: "名#{n + 1}",
+      last_name: "姓#{n + 1}",
+      kana_first_name: "セイ",
+      kana_last_name: "メイ",
+      password: "123456",
+      postal_code: "1234567",
+      address: "東京都渋谷区神南1丁目19-11 パークウェースクエア2 4階#{n + 1}",
+      phone_number: "09012345678"
+    )
+end
+
+  Admin.create!(
+    email: "admin@admin",
+    password: "adminadmin"
+  )
