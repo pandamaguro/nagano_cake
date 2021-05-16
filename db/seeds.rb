@@ -24,22 +24,24 @@ end
     password: "adminadmin"
   )
 
-  15.times do |n|
-    Item.create!(
-      genle_id: 0,
-      name: "いちごのショートケーキ（ホール）#{n + 1}",
-      introduction: "栃⽊県産のとちおとめを贅沢に使⽤しています。",
-      price: 2750,
-      is_active: TRUE,
-      image: open("./app/assets/images/ホールケーキ.jpg")
-    )
+15.times do |n|
+  Item.create!(
+    genre_id: 0,
+    name: "いちごのショートケーキ（ホール）#{n + 1}",
+    introduction: "栃⽊県産のとちおとめを贅沢に使⽤しています。",
+    price: 2750,
+    is_active: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/ホールケーキ.jpg")
+  )
+end
 
-  5.times do |n|
-    Item.create!(
-      genle_id: 0,
-      name: "ガトーショコラ#{n + 1}",
-      introduction: "こだわったチョコレートを贅沢に使⽤しています。",
-      price: 800,
-      is_active: FALSE,
-      image: open("./app/assets/images/ガトーショコラ.jpg")
-    )
+5.times do |n|
+  Item.create!(
+    genre_id: 0,
+    name: "ガトーショコラ#{n + 1}",
+    introduction: "こだわったチョコレートを贅沢に使⽤しています。",
+    price: 800,
+    is_active: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/ガトーショコラ.jpg")
+  )
+end
