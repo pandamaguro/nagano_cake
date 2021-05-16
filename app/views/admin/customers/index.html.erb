@@ -3,7 +3,7 @@
   <div class="row d-flex justify-content-center">
     <table class="table">
       <thead>
-        <tr class="info">
+        <tr>
             <th>会員ID</th>
             <th>氏名</th>
             <th>メールアドレス</th>
@@ -25,9 +25,9 @@
              </td>
              <td class="col-xs-2">
                 <% if customer.is_deleted == true%>
-                  <p><i class="fas fa-user-times"></i>退会済</p>
+                  <p class="text-secondary">退会済</p>
                 <% else %>
-                  <p><i class="far fa-user"></i>有効</p>
+                  <p class="text-success">有効</p>
                 <% end %>
              </td>
          </tr>
