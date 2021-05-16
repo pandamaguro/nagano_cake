@@ -1,0 +1,51 @@
+<div class="container">
+  <h2 class="my-5"><%= full_name(@customer)%>さんの会員詳細</h2>
+    <div class="row w-50 mb-3">
+      <div class="col-md-4">会員ID</div>
+      <div class="col-md-8"><%= @customer.id%></div>
+    </div>
+    
+    <div class="row w-50 mb-3">
+      <div class="col-md-4">氏名</div>
+      <div class="col-md-8"><%= full_name(@customer) %></div>
+    </div>
+    
+    <div class="row w-50 mb-3">
+      <div class="col-md-4">フリガナ</div>
+      <div class="col-md-8"><%= kana_full_name(@customer)%></div>
+    </div>
+    
+    <div class="row w-50 mb-3">
+      <div class="col-md-4">郵便番号</div>
+      <div class="col-md-8"><%= @customer.postal_code%></div>
+    </div>
+    
+    <div class="row w-50 mb-3">
+      <div class="col-md-4">住所</div>
+      <div class="col-md-8"><%= @customer.address%></div>
+    </div>
+    
+    <div class="row w-50 mb-3">
+      <div class="col-md-4">電話番号</div>
+      <div class="col-md-8"><%= @customer.phone_number%></div>
+    </div>
+    
+    <div class="row w-50 mb-3">
+      <div class="col-md-4">メールアドレス</div>
+      <div class="col-md-8"><%= @customer.email%></div>
+    </div>
+    
+    <div class="row w-50 mb-3">
+      <div class="col-md-4">会員ステータス</div>
+      <% if @customer.is_deleted == true%>
+        <div class="col-md-8 text-secondary">退会済み</div>
+      <% else %>
+        <div class="col-md-8 text-success">有効</div>
+      <% end %>
+    </div>
+    <div class="d-flex justify-content-center">
+      <%= link_to "編集する",edit_admin_customer_path, class:"btn btn-success mr-5"%>
+      <%= link_to "注文履歴一覧を見る",admin_orders_path, class:"btn btn-primary ml-5"%>
+    </div>
+  </div>
+</div>
