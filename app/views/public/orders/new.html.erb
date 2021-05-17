@@ -1,0 +1,62 @@
+<div class="container">
+  <h2 class="my-5">注文情報入力</h2>
+  <div class="row">
+    <div class="col-xs-12">
+      <% if current_customer.cart_items.present? %>
+        <div class="col-xs-offset-1">
+        <%= form_with model: @order, url: confirm_orders_path, method: :post, local: true do |f| %>
+          <h5 class="col-xs-3 font-weight-bold mb-3">支払い方法</h5>
+           <div class="col-xs-10">
+             <%= f.radio_button :payment, :"クレジットカード", checked: true %>
+             <span>&nbsp;クレジットカード</span>
+           </div>
+           <div class="col-xs-10">
+             <%= f.radio_button :payment, :"銀行振り込み" %>
+             <span>&nbsp;銀行振り込み</span>
+           </div>
+           
+          <h5 class="col-xs-3 font-weight-bold my-3">お届け先</h5>
+           <div class="col-xs-10">
+             <%= f.radio_button :address, "address", checked: true %>
+             <span>&nbsp;ご自身の住所</span>
+             &emsp;&emsp;<%= "#{current_customer.postal_code} #{current_customer.address}"%>
+             &emsp;&emsp;<%= "#{full_name(current_customer)}"%>
+           </div>
+           
+          <% if @address != [] %>
+          <div class="col-xs-10">
+            <%= f.radio_button :address, "addresses"%>
+             <span>&nbsp;登録済住所から選択</span>
+             &emsp;&emsp;<%= f.collection_select(:addresses_id, @addresses, :id)%>
+          </div>
+           <% end %>
+           
+           <div class="col-xs-10">
+             <%= f.radio_button :address, "new_address"%>
+             <span>&nbsp;新しいお届け先</span>
+             <div class="col-xs-12 form_group">
+               <%= f.label :"郵便番号（ハイフンなし）",class:"col-sm-4 form-control-static"%>
+               <%= f.text_field :postal_code, class:"col-sm-6 form-control-static"%>
+             </div>
+             <div class="col-xs-12 form_group">
+               <%= f.label :"住所",class:"col-sm-4 form-control-static"%>
+               <%= f.text_field :address, class:"col-sm-6 form-control-static"%>
+             </div>
+             <div class="col-xs-12 form_group">
+               <%= f.label :"宛名",class:"col-sm-4 form-control-static"%>
+               <%= f.text_field :name, class:"col-sm-6 form-control-static"%>
+             </div>
+           </div>
+           
+           <div class="col-xs-8">
+             <%= f.submit "確認画面へ進む", class:"btn btn-success col-xs-5 "%>
+           </div>
+        <% end %>
+        </div>
+      <% else %>
+        <p>お客様のカートに商品はありません。</p>
+        <p><%= link_to "商品一覧", items_path, class:"btn btn-primary"%>から商品をお探し下さい。</p>
+      <% end %>
+    </div>
+  </div>
+</div>
