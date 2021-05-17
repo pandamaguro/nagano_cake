@@ -14,7 +14,7 @@
       <ul class="navbar-nav ml-auto">
        <% if customer_signed_in? %>
         <li class="nav-item">
-         <span class="nav-link text-dark">ようこそ<%= current_customer.first_name%>さん</span>
+         <span class="nav-link text-dark">ようこそ<%= full_name(current_customer)%>さん</span>
         </li>
         <li>
           <%= link_to "マイページ", customers_path(current_customer), class: 'nav-link text-dark'%>
