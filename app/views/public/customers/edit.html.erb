@@ -1,0 +1,47 @@
+<div class="container">
+  <h2 class="my-5">会員情報編集</h2>
+  <div class="row">
+    <%= form_with model:@customer,url:update_customers_path, method: :patch, local: true do |f|%>
+    
+    <div class="col-xs-12">
+      <div class="form-group row">
+        <%= f.label :"氏名",class:"col-4"%>
+        <%= f.text_field :last_name, class:"col-3"%>
+        <%= f.text_field :first_name, class:"col-3 ml-3"%>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :"フリガナ", class:"col-4"%>
+        <%= f.text_field :kana_last_name, class:"col-3"%>
+        <%= f.text_field :kana_first_name, class:"col-3 ml-3"%>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :"郵便番号", class:"col-4"%>
+        <%= f.text_field :postal_code, class:"col-4"%>
+      </div>
+      
+      <div class="form-group row">
+        <%= f.label :"住所", class:"col-4"%>
+        <%= f.text_field :address, class:"col-8"%>
+      </div>
+      
+      <div class="form-group row">
+        <%= f.label :"電話番号", class:"col-4"%>
+        <%= f.text_field :phone_number,class:"col-4"%>
+      </div>
+
+      <div class="form-group row">
+        <%= f.label :"メールアドレス", class:"col-4"%>
+        <%= f.email_field :email, class:"col-8"%>
+      </div>
+      
+      <div>
+        <%= f.submit "編集内容を保存する",class:"btn btn-success mr-5"%>
+        <%= link_to "退会する", quit_customers_path,class:"btn btn-danger ml-5"%>
+      </div>
+      <% end %>
+      </div>      
+    </div>
+  </div>
+</div>
