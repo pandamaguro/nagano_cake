@@ -5,7 +5,8 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :address
       t.string :postal_code
-
+      
+      t.string :maguro
       t.timestamps
     end
   end

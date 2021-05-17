@@ -17,6 +17,7 @@ ActiveRecord::Schema.define(version: 2021_05_17_103118) do
     t.string "name"
     t.string "address"
     t.string "postal_code"
+    t.string "maguro"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
