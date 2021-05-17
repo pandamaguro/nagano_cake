@@ -8,7 +8,8 @@ class Public::OrdersController < ApplicationController
   end
   
   def new
-    
+    @order = Order.new
+  	@address = Address.where(customer: current_customer)
   end
   
   def confirm
