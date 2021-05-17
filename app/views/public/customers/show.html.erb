@@ -1,8 +1,8 @@
 <div class="container">
-  <h2>マイページ</h2>
+  <h2 class="my-5">マイページ</h2>
   <div class="row">
     <p>登録者情報</p>
-    <p><%= link_to "編集する", customers_edit_path, class:"btn btn-success"%></p>
+    <p><%= link_to "編集する",edit_customers_path, class:"btn btn-success ml-5"%></p>
     <table class="table">
       <tbody>
         <tr>
@@ -31,11 +31,11 @@
         </tr>        
       </tbody>
     </table>
-    <div>
+    <div class="mr-5">
       <p>配送先</p>
       <p><%= link_to "一覧を見る",addresses_path, class:"btn btn-primary"%></p>
     </div>
-    <div>
+    <div class="ml-5">
       <p>注文履歴</p>
       <p><%= link_to "一覧を見る", orders_path,class:"btn btn-primary"%></p>
     </div>
