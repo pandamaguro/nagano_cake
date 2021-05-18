@@ -1,6 +1,7 @@
 <div class="container">
-  <h2 class="my-5">注文情報入力</h2>
+  <h2 class="font-weight-bold my-5">注文情報入力</h2>
   <div class="row">
+    
     <div class="col-xs-12">
       <% if current_customer.cart_items.present? %>
         <div class="col-xs-offset-1">
@@ -8,48 +9,48 @@
           <h5 class="col-xs-3 font-weight-bold mb-3">支払い方法</h5>
            <div class="col-xs-10">
              <%= f.radio_button :payment, :"クレジットカード", checked: true %>
-             <span>&nbsp;クレジットカード</span>
+             <%= f.label :"クレジットカード"%>
            </div>
            <div class="col-xs-10">
              <%= f.radio_button :payment, :"銀行振り込み" %>
-             <span>&nbsp;銀行振り込み</span>
+             <%= f.label :"銀行振り込み"%>
            </div>
            
           <h5 class="col-xs-3 font-weight-bold my-3">お届け先</h5>
            <div class="col-xs-10">
              <%= f.radio_button :address, "address", checked: true %>
-             <span>&nbsp;ご自身の住所</span>
-             &emsp;&emsp;<%= "#{current_customer.postal_code} #{current_customer.address}"%>
-             &emsp;&emsp;<%= "#{full_name(current_customer)}"%>
+             <%= f.label :"ご自身の住所"%><br>
+             <%= "〒#{current_customer.postal_code} #{current_customer.address}"%><br>
+             <%= "#{full_name(current_customer)}"%>
            </div>
            
           <% if @address != [] %>
           <div class="col-xs-10">
             <%= f.radio_button :address, "addresses"%>
-             <span>&nbsp;登録済住所から選択</span>
-             &emsp;&emsp;<%= f.collection_select(:addresses_id, @addresses, :id)%>
+             <%= f.label :"登録住所からの選択"%><br>
+             <%= f.collection_select :address_id, Address.all,size: "30" %>
           </div>
-           <% end %>
+          <% end %>
            
-           <div class="col-xs-10">
+           <div class="col-xs-10 mt-5">
              <%= f.radio_button :address, "new_address"%>
-             <span>&nbsp;新しいお届け先</span>
+             <%= f.label :"新しいお届け先"%>
              <div class="col-xs-12 form_group">
                <%= f.label :"郵便番号（ハイフンなし）",class:"col-sm-4 form-control-static"%>
-               <%= f.text_field :postal_code, class:"col-sm-6 form-control-static"%>
+               <%= f.text_field :postal_code, class:"col-sm-3 form-control-static",placeholder:"0000000"%>
              </div>
-             <div class="col-xs-12 form_group">
+             <div class="col-xs-12 form_group my-3">
                <%= f.label :"住所",class:"col-sm-4 form-control-static"%>
-               <%= f.text_field :address, class:"col-sm-6 form-control-static"%>
+               <%= f.text_field :address, class:"col-sm-6 form-control-static",placeholder:"東京都渋谷区代々木神園町0-0",:size =>"100"%>
              </div>
              <div class="col-xs-12 form_group">
                <%= f.label :"宛名",class:"col-sm-4 form-control-static"%>
-               <%= f.text_field :name, class:"col-sm-6 form-control-static"%>
+               <%= f.text_field :name, class:"col-sm-3 form-control-static",placeholder:"令和道子"%>
              </div>
            </div>
            
-           <div class="col-xs-8">
-             <%= f.submit "確認画面へ進む", class:"btn btn-success col-xs-5 "%>
+           <div class="col-xs-8 d-flex justify-content-center mt-5">
+             <%= f.submit "確認画面へ進む", class:"btn btn-primary col-xs-5 "%>
            </div>
         <% end %>
         </div>
