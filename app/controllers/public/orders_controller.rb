@@ -1,19 +1,21 @@
 class Public::OrdersController < ApplicationController
+ 
   include ApplicationHelper
+  before_action :authenticate_customer!
   
   def index
-    
+    @orders = current_customer.orders
   end
-  
+
   def show
-    
+
   end
-  
+
   def new
     @order = Order.new
     @address = Address.all
   end
-  
+
   def confirm
     @cart_items = current_customer.cart_items
     
@@ -51,7 +53,7 @@ class Public::OrdersController < ApplicationController
       end
     end
   end
-  
+
   def create
     @order = current_customer.orders.new(order_params)
     @order.save
@@ -76,7 +78,7 @@ class Public::OrdersController < ApplicationController
     # 最後にカートを全て削除する
       @cart_items.destroy_all
   end
-  
+
   def thanx
   end
   
@@ -90,4 +92,6 @@ class Public::OrdersController < ApplicationController
       params.require(:order).permit(:postal_code, :address, :name)
     end
   
+
+  end
 end
