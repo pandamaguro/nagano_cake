@@ -2,7 +2,7 @@ Rails.application.routes.draw do
     # admin
   devise_for :admin, :controllers => {
     :sessions => 'admin/sessions',
-    :registrations => 'admin/registrations',
+    # :registrations => 'admin/registrations',
   }
   namespace :admin do
     resources :customers,only: [:index,:show,:edit,:update]
@@ -34,8 +34,10 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :items,only: [:index,:show]
     get 'search' => 'items#search'
-    get 'customers/edit' => 'customers#edit'
-    patch 'customers' => 'customers#update'
+    # deviseと衝突してしまうので、オリジナルに変更
+    get 'edit/customers' => 'customers#edit'
+    patch 'update/customers' => 'customers#update'
+    
   	resource :customers,only: [:edit,:update,:show] do
   		collection do
   	     get 'quit'

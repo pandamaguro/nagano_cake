@@ -1,0 +1,11 @@
+<h1>商品一覧</h1><h4>(全<%= @total_items.count %>件)</h4>
+<% @items.each do |item| %>
+  <%= attachment_image_tag item, :image, size: "180x130", fallback: "no_image.jpg" %><br>
+  <%= link_to "#{item.name}", item_path(item.id) %>
+  <% if item.is_active == true %>
+    <p>¥<%= (item.price * 1.08).to_i.to_s(:delimited, delimiter: ',') %></p>
+  <% else %>
+    <p>売り切れ</p>
+  <% end %>
+<% end %>
+<%= paginate(@items) %>
