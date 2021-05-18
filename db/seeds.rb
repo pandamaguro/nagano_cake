@@ -58,6 +58,15 @@ end
     )
   end
 
+  Item.create!(
+    genre_id: 1,
+    name: "レモンケーキ",
+    introduction: "こうきちパティシエ特製のおすすめ商品です。",
+    price: 900,
+    is_active: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/レモンケーキ.jpg")
+  )
+
   9.times do |n|
     Address.create!(
       name: "test#{n + 1}",
