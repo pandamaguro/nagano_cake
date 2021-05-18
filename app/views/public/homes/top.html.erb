@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-xs-12 mx-auto">
                 <div class="text-center">
-                    <img src="assets/top_image1" >
+                    <%= image_tag "top/top_image1.jpg" %>
                     <p>
                         <span>Welcome Naganocake</span><br>
                         このサイトは、ケーキ販売のECサイトになります。<br>
@@ -14,7 +14,7 @@
                 
                 <h2>新着商品</h2>
                 <% @items.first(5). each do |item| %>
-                   <%# =render "item_each", item: item %>
+                   <%= render "item_each", item: item %>
                 <% end %>
                 <div class="col-xs-12">
                     <%= link_to "全ての商品を見る", items_path %>
