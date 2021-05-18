@@ -1,31 +1,37 @@
 <div class="container">
   <div class="row">
-    <div class="col-6 offset-3">
-      
-    <h2 class="mt-5">管理者ログイン</h2>
-    
-    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-      <div class="field">
-        <%= f.label :"メールアドレス" %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
-    
-      <div class="field">
-        <%= f.label :"パスワード" %><br />
-        <%= f.password_field :password, autocomplete: "current-password" %>
-      </div>
-    
-      <% if devise_mapping.rememberable? %>
-        <div class="field">
-          <%= f.check_box :remember_me %>
-          <%= f.label :remember_me %>
-        </div>
-      <% end %>
-    
-      <div class="actions">
-        <%= f.submit "Log in",class:"btn btn-primary" %>
-      </div>
-    <% end %>
+    <h3 class="sign-in-title">会員の方はこちらからログイン</h3>
+    <div style="color: red;">
+       <%= flash[:error] %>
     </div>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <table class="col-xs-5">
+        <tr>
+          <th>メールアドレス</th>
+          <td><%= f.email_field :email, autofocus: true, autocomplete: "email",class: "col-xs-12", value: "" %></td>
+        </tr>
+        <tr>
+          <th>パスワード</th>
+          <td><%= f.password_field :password, autocomplete: "current-password",class: "col-xs-12", value: "" %></td>
+        </tr>
+        <tr>
+          <td colspan="2"><%= f.submit 'ログイン', class: "btn btn-primary sign-in-button"%></td>
+        </tr>
+     </table>
+    <% end %>
+  </div>
+</div>
+
+<div class="container">
+<div class="row">
+<%# パスワード変更リンク追加 %>
+  <%= link_to ' => パスワードを忘れた方はこちら', new_customer_password_path %>
+</div>
+</div>
+
+<div class="container">
+  <div class="row">
+    <h4>登録がお済みでない方</h4>
+    <span class="col-xs-offset-2"><%= link_to 'こちら', new_customer_registration_path %>から新規登録を行ってください</span>
   </div>
 </div>

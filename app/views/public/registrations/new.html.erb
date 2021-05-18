@@ -1,28 +1,48 @@
-<h2>public</h2>
-<h2>Sign up</h2>
+<div class="row">
+  <div class="col-xs-offset-1 col-xs-11">
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "layouts/error_message", resource: resource%>
+    <h2 class="head-line title_h2 text-center"><i class="fas fa-user-edit"></i>新規会員登録</h2>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <%= render "layouts/error_message", resource: resource %>
+
+      <div class="field form-group col-xs-12">
+        <%= f.label :"名前", class: "col-sm-2 control-label" %>
+        <%= f.label :"(姓)", class: "col-sm-1 control-label" %>
+        <%= f.text_field :last_name, autofocus: true, class: "col-sm-3 form-control-static name" %>
+        <%= f.label :"(名)", class: "col-sm-1 control-label" %>
+        <%= f.text_field :first_name, autofocus: true, class: "col-sm-3 form-control-static name" %>
+      </div>
+
+      <div class="field form-group col-xs-12">
+        <%= f.label :"フリガナ", class: "col-sm-2 control-label" %>
+        <%= f.label :"(セイ)", class: "col-sm-1 control-label" %>
+        <%= f.text_field :kana_last_name, autofocus: true, class: "col-sm-3 form-control-static name" %>
+        <%= f.label :"(メイ)", class: "col-sm-1 control-label" %>
+        <%= f.text_field :kana_first_name, autofocus: true, class: "col-sm-3 form-control-static name" %>
+      </div>
+
+        <%=# render "admin/customers/form_mail", f: f %>
+        <%=# render "admin/customers/form_customer", f: f %>
+
+      <div class="field form-group col-xs-9">
+        <%= f.label :"パスワード(6文字以上)", class: "col-sm-4 control-label" %>
+        <%= f.password_field :password, autocomplete: "new-password", class: "col-sm-4 form-control-static" %>
+      </div>
+
+      <div class="field form-group col-xs-9">
+        <%= f.label :"パスワード(確認用)", class: "col-sm-4 control-label" %>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "col-sm-4 form-control-static" %>
+      </div>
+
+      <div class="actions col-xs-9">
+        <%= f.submit "新規登録",class: 'btn btn-success btn-lg col-xs-7' %>
+      </div>
+    <% end %>
+
+    <div class="col-xs-9">
+      <h2 class="head-line title_h2 text-center">既に登録済みの方</h2>
+      <p class="new-link"><%= render "customers/shared/links" %>からログインしてください。</p>
+    </div>
   </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
+</div>
