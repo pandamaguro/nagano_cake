@@ -90,7 +90,7 @@ ActiveRecord::Schema.define(version: 2021_05_17_103118) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "customer_id"
-    t.integer "shipping_cost"
+    t.integer "shipping_cost", default: 800
     t.integer "total_payment"
     t.string "name"
     t.integer "payment_method", default: 0
