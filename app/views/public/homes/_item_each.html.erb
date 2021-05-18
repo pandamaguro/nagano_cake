@@ -1,6 +1,3 @@
-  
-<% if item.genre.is_valid == true %>
-
 
       <%= link_to item_path(item.id), class: "btn-link", :style=>"color:#0099FF;" do %>
       <div id="img_field" >
@@ -10,10 +7,8 @@
         <%= item.name %>
       </p>
       <% end %>
-    <% if item.is_sale == true %>
-      <p>¥<%= item.tax_out_price.to_s(:delimited) %></p>
-    <% elsif item.is_sale == false %>
+    <% if item.is_active == true %>
+      <p>¥<%= item.price.to_s(:delimited) %></p>
+    <% elsif item.is_active == false %>
       <p class="soldout">売り切れ中</p>
     <% end %>
-
-<% end %>
