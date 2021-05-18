@@ -12,6 +12,10 @@
   <body>
     <%= render "layouts/header"%>
     <main>
+      <div class="container">
+      <div id="flash">
+        <%= render "layouts/flash" %>
+      </div>
       <%= yield %>
     </main>
     <footer></footer>
