@@ -1,0 +1,24 @@
+
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 mx-auto">
+                <div class="text-center">
+                    <%= image_tag "ホールケーキ.jpg" %>
+                    <p>
+                        <span>Welcome Naganocake</span><br>
+                        このサイトは、ケーキ販売のECサイトになります。<br>
+                        会員でない方も商品の閲覧はできますが、<br>
+                        購入には会員登録が必要になります。<br>
+                    </p>
+                </div>
+                
+                <h2>新着商品</h2>
+                <% @items.first(5). each do |item| %>
+                   <%= render "item_each", item: item %>
+                <% end %>
+                <div class="col-xs-12">
+                    <%= link_to "全ての商品を見る", items_path %>
+                </div>
+            </div>
+        </div>
+    </div>
