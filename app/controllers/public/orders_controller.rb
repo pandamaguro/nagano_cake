@@ -9,7 +9,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def new
-
+    @order = Order.new
+    @address = Address.all
   end
 
   def confirm
