@@ -43,7 +43,7 @@ end
       introduction: "栃⽊県産のとちおとめを贅沢に使⽤しています。",
       price: 2750,
       is_active: [['販売中', true], ['販売停止', false]],
-      image: open("./app/assets/images/ホールケーキ.jpg")
+      image: open("./app/assets/images/whole_cake.jpg")
     )
   end
 
@@ -54,7 +54,7 @@ end
       introduction: "こだわったチョコレートを贅沢に使⽤しています。",
       price: 800,
       is_active: [['販売中', true], ['販売停止', false]],
-      image: open("./app/assets/images/ガトーショコラ.jpg")
+      image: open("./app/assets/images/chocolate_cake.jpg")
     )
   end
 
@@ -64,7 +64,7 @@ end
     introduction: "こうきちパティシエ特製のおすすめ商品です。",
     price: 900,
     is_active: [['販売中', true], ['販売停止', false]],
-    image: open("./app/assets/images/レモンケーキ.jpg")
+    image: open("./app/assets/images/lemon_cake.jpg")
   )
 
   9.times do |n|
