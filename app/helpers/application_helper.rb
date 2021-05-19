@@ -7,6 +7,10 @@ module ApplicationHelper
     customer.kana_last_name + customer.kana_first_name
   end
   
+  def full_address(key)
+    "#{key.postal_code}#{key.address}"
+  end
+  
   def current_cart
     @cart_items = current_customer.cart_items
   end
@@ -33,4 +37,15 @@ module ApplicationHelper
   def billing(order)
     total_price(current_cart) + order.shipping_cost
   end
+
+# タブへの表示
+	def full_title(title = "")
+	  base = "NaganoCake"
+	  if admin_signed_in?
+	    base + "/" + "(管理者用) #{title}"
+	  else
+	    base + "/" + "#{title}"
+	  end
+	end
+	
 end
