@@ -1,0 +1,10 @@
+<% if @cart_items.present? %>
+  $('#cart-<%= @cart_item.id %>').remove();
+  $('#total_price').html("¥<%= @total %>");
+<% else %>
+  $('#no_cart').html("<%= j(render 'customer/cart_items/no_cart') %>");
+<% end %>
+$('#header').html("<%= j(render 'layouts/header') %>");
+$('#flash').html("<%= j(render 'layouts/flash') %>");
+$('#flash').show();
+setTimeout("$('#flash').fadeOut('slow')", 2000);
