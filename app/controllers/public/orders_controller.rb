@@ -71,9 +71,8 @@ class Public::OrdersController < ApplicationController
       @order_detail.item_id = cart_item.item_id
       @order_detail.order_id = @order.id
       @order_detail.count = cart_item.count
-      @order_detail.making_status = 0
       @order_detail.price = cart_item.item.price
-      @order.save
+      @order_detail.save
       end
     # 最後にカートを全て削除する
     @cart_items.destroy_all
