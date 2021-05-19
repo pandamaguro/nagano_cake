@@ -33,4 +33,15 @@ module ApplicationHelper
   def billing(order)
     total_price(current_cart) + order.shipping_cost
   end
+
+# タブへの表示
+	def full_title(title = "")
+	  base = "NaganoCake"
+	  if admin_signed_in?
+	    base + "/" + "(管理者用) #{title}"
+	  else
+	    base + "/" + "#{title}"
+	  end
+	end
+	
 end
