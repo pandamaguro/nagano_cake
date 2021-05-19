@@ -7,6 +7,10 @@ module ApplicationHelper
     customer.kana_last_name + customer.kana_first_name
   end
   
+  def full_address(key)
+    "#{key.postal_code}#{key.address}"
+  end
+  
   def current_cart
     @cart_items = current_customer.cart_items
   end

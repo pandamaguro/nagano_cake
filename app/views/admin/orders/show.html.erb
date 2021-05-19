@@ -1,0 +1,25 @@
+<div class="container">
+  <h2 class="my-5">注文履歴詳細</h2>
+  <div class="row">
+    <div class="col-xs-12">
+      <table class="table table-borderless">
+         <thead>
+            <tr><th>購入者</th><td><%= full_name(@order.customer) %></td></tr>
+            <tr><th>注文日</th><td><%= @order.created_at%></td></tr>
+            <tr><th>配送先</th><td>〒<%= full_address(@order)%></td></tr>
+            <tr><th>支払方法</th><td><%= @order.payment_method %></td></tr>
+            <tr>
+             <th>注文ステータス</th>
+              <td>
+                <%= form_with(model: @order, url: admin_order_path, method: :patch, local: true) do |f| %>
+                <%= f.select :status, Order.statuses.keys,class:"status"%>
+                <%= f.submit '更新', class:"btn btn-sm btn-success" %>
+                <% end %>
+              </td>
+              <td></td>
+           </tr>
+         </thead>
+     </table>
+    </div>
+  </div>
+</div>
