@@ -54,7 +54,7 @@
   	<% @order_details.each do |order_detail| %>
       <tr>
 		    <td><%= order_detail.item.name %></td>
-		    <td><%= (order_detail.item.price * 1.08).to_i.to_s(:delimited) %>円</td>
+		    <td><%= (order_detail.item.price * 1.1).to_i.to_s(:delimited) %>円</td>
 		    <td><%= order_detail.count %></td>
 		    <td><%= order_detail.price.to_i.to_s(:delimited) %>円</td>
       </tr>
