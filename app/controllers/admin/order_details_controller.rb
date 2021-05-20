@@ -6,13 +6,11 @@ class Admin::OrderDetailsController < ApplicationController
     @order_detail.update(order_detail_params)
     @order = @order_detail.order
     
-    # 制作ステータスを「製作中(2)」にアップデートされたら→注文ステータスを「製作中(2)」
     if @order_detail.update(making_status: 2)
       @order.update(status: 2)
       @order.save
     end
       
-    # 注文個数と制作完了になっている個数が同じならば
     if @order.order_details.count == @order.order_details.where(making_status: 3).count
       @order.update(status: 3)
       @order.save
