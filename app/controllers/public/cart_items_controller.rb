@@ -13,7 +13,7 @@ class Public::CartItemsController < ApplicationController
       @old_cart_item.destroy
     end
     if @cart_item.save
-      redirect_to items_path
+      redirect_to cart_items_path
     else
       render ("items/show")
     end
