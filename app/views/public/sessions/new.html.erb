@@ -1,26 +1,30 @@
-<h2>public</h2>
-<h2>Log in</h2>
-
-<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
-
-  <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
-      <%= f.label :remember_me %>
+  
+<div class="container">
+<h3>ログイン</h3>
+<div class="px-4 py-4">
+  <h6>会員の方はこちらからログイン</h6>
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="px-5 py-2">
+    <div class="row my-3">
+      <div class= "sing-in-label"><%= f.label :"メールアドレス" %></div>
+      <div class= "sing-in-input"><%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"48" %></div>
     </div>
-  <% end %>
 
-  <div class="actions">
-    <%= f.submit "Log in" %>
+    <div class="row my-3">
+      <div class= "sing-in-label"><%= f.label :"パスワード" %></div>
+      <div class= "sing-in-input"><%= f.password_field :password, autocomplete: "current-password", :size=>"48" %></div>
+    </div>
+    <div class="actions row my-4">
+      <div class= "sing-in-label"></div>
+      <div class= "sing-in-input"><%= f.submit "ログイン",class: "btn btn-primary"%></div>
+    </div>
   </div>
-<% end %>
+  <% end %>
+    <div>
+        <h6 class="pt-4">会員登録がお済みでない⽅</h6>
+        <div class="px-5 py-2"><p><%= link_to "こちら", new_customer_registration_path %>からログインしてください。</p></div>
+    </div>
+  </div>
+</div>
+  </div>
+</div>
