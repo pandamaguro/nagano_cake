@@ -30,10 +30,10 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-　　　flash.now[:notice] = "商品の新規登録が完了しました。"
+      flash[:notice] = "商品の新規登録が完了しました。"
       redirect_to admin_item_path(@item)
     else
-      flash.now[:alert] = "商品の新規登録内容に不備があります。"
+      flash[:alert] = "商品の新規登録内容に不備があります。"
       render :new
     end
     
