@@ -1,7 +1,9 @@
 <h1>商品一覧</h1><h4>(全<%= @total_items.count %>件)</h4>
 <% @items.each do |item| %>
-  <%= attachment_image_tag item, :image, size: "180x130", fallback: "no_image.jpg" %><br>
-  <%= link_to "#{item.name}", item_path(item.id) %>
+  <%= link_to item_path(item.id) do %>
+    <%= attachment_image_tag item, :image, size: "180x130", fallback: "no_image.jpg" %><br>
+    <%= item.name %>
+  <% end %>
   <% if item.is_active == true %>
     <p>¥<%= (item.price * 1.08).to_i.to_s(:delimited, delimiter: ',') %></p>
   <% else %>
