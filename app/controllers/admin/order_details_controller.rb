@@ -2,17 +2,19 @@ class Admin::OrderDetailsController < ApplicationController
    before_action :authenticate_admin!
   def update
     @order_detail = OrderDetail.find(params[:id])
-    @order_detail.update(order_detail_params)
     
+    @order_detail.update(order_detail_params)
     @order = @order_detail.order
     
-    if @order.order_details.where(making_status: '製作中').count > 0
-      @order.order_status = '製作中'
+    # 制作ステータスを「製作中(2)」にアップデートされたら→注文ステータスを「製作中(2)」
+    if @order_detail.update(making_status: 2)
+      @order.update(status: 2)
       @order.save
     end
-    
-    if @order.order_details.where(making_status: '制作完了').count == @order.order_details.count
-      @order.status = '発送準備中'
+      
+    # 注文個数と制作完了になっている個数が同じならば
+    if @order.order_details.count == @order.order_details.where(making_status: 3).count
+      @order.update(status: 3)
       @order.save
     end
     
@@ -22,6 +24,6 @@ class Admin::OrderDetailsController < ApplicationController
   private
   
   def order_detail_params
-    params.require(:order_detail).permit(:order_id, :making_status, :count)
+    params.require(:order_detail).permit(:order_id, :making_status, :count, :order_id)
   end
 end
