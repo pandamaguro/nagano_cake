@@ -28,7 +28,7 @@
           <div class="col-xs-10">
             <%= f.radio_button :my_address, "2"%>
              <%= f.label :"登録住所からの選択"%><br>
-<!--データ揃っていないので-->
+            <%= f.collection_select  :address_id, @addresses, :id, :order_address%>
           </div>
           <% end %>
 
