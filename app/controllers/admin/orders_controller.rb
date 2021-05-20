@@ -11,12 +11,14 @@ class Admin::OrdersController < ApplicationController
   
   def update
     @order = Order.find(params[:id])
-    if @order.update(order_params)
-      flash[:notice] = "注文ステータスの変更しました"
-      redirect_to admin_order_path(@order)
-    else
-      
-      render :show
+    @order.update(order_params)
+    flash[:notice] = "注文ステータスの変更しました"
+    redirect_to admin_order_path(@order)
+    # 注文ステータスの動きに合わせて、makingも変更
+    if @order.status == "入金確認"
+      @order.order_details.each do |order_detail|
+        order_detail.update(making_status: 1)
+      end
     end
     
   end
@@ -32,7 +34,7 @@ class Admin::OrdersController < ApplicationController
   private
   
   def order_params
-    params.require(:order).permit(:status)
+    params.require(:order).permit(:shipping_cost,:total_payment,:name,:payment_method,:address,:postal_code,:status,:making_status)
   end
   
 end
