@@ -16,7 +16,7 @@
           <%= attachment_image_tag i.item, :image, size: "55x43", fallback: "no_image.jpg" %>
           <%= i.item.name %>
         </th>
-        <th><%= tax_in_price(i).to_s(:delimited, delimiter: ',') %></th>
+        <th><%= i.item.tax_in_price.to_s(:delimited, delimiter: ',') %></th>
         <th>
           <%= form_with model:i, url: cart_item_path(i), method: :patch , remote: true do |f| %>
           <%= f.number_field :count, size: 10, min: 1 %>

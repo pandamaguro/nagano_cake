@@ -37,7 +37,7 @@
           <% @order.order_details.each do |order_detail|%>
             <tr>
               <td><p><%= order_detail.item.name%></p></td>
-              <td><p><%= tax_price(order_detail.item.price)%></p></td>
+              <td><p><%= order_detail.item.tax_in_price %></p></td>
               <td><p><%= order_detail.count%></p></td>
               <td><p><%= sub_price(order_detail)%></p></td>
               <td>
