@@ -3,6 +3,7 @@
   <head>
     <title><%= full_title(yield :title) %></title>
     <%= favicon_link_tag 'favicon.jpeg' %>
+    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -19,6 +20,6 @@
       </div>
       <%= yield %>
     </main>
-    <footer></footer>
+    <%= render "layouts/footer"%>
   </body>
 </html>

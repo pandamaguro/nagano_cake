@@ -16,3 +16,19 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
+
+.header-title{
+  font-family: 'Dancing Script', cursive;
+  font-weight: bold;
+  font-size: 25px;
+  color: black;
+}
+
+footer{
+  min-height: 50px;
+  background: #999;
+  color: white;
+  padding: 2rem 0;
+}
