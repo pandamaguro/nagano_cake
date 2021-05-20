@@ -14,7 +14,7 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
-    @address = Address.all
+    @addresses = current_customer.addresses
   end
 
   def confirm
