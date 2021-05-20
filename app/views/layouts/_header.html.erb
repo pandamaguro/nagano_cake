@@ -2,7 +2,7 @@
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container">
       <% if admin_signed_in? %>
-        <%= link_to "NaganoCAKE", admin_top_path%>
+        <%= link_to "NaganoCAKE", admin_orders_path%>
       <% else %>
         <%= link_to "NaganoCAKE", root_path%>
       <% end %>
@@ -35,6 +35,9 @@
          <li>
            <%= link_to "会員一覧", admin_customers_path, class:'nav-link text-dark'%>
          </li>
+         <li>
+           <%= link_to "注文履歴一覧", admin_orders_path, class:'nav-link text-dark'%>
+         </li>         
          <li class="nav-item">
            <%= link_to "ジャンル一覧", admin_genres_path,class: 'nav-link text-dark'%>
          </li>
