@@ -19,7 +19,7 @@
                 <%= cart.item.name %>
               </td>
               <td class="text-right">
-                ¥<%= tax_price(cart.item.price).to_s(:delimited) %>
+                ¥<%= cart.item.tax_in_price.to_s(:delimited) %>
               </td>
               <td class="text-right">
                   <%= cart.count %>
@@ -32,7 +32,7 @@
         </tbody>
       </table>
     </div>
-    
+
     <div class="col-xs-3 offset-md-1">
       <table class="table">
           <tr>
@@ -70,7 +70,7 @@
       </table>
     </div>
   </div>
-  
+
   <div class="row">
     <h3 class="mx-auto">
       <%= form_with model: @order, url: orders_path, method: :post, local: true do |f|%>

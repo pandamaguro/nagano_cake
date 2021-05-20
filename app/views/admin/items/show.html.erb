@@ -25,7 +25,7 @@
                   <%= "税込価格" %><br>
                   <%= "(税抜価格)" %>
               </th>
-              <td><%= (@item.price*1.1).to_i %>   (<%= @item.price %>) 円</td>
+              <td><%= @item.tax_in_price %> (<%= @item.price %>) 円</td>
             </tr>
             <tr>
               <th><%= "販売ステータス" %></th>
@@ -35,7 +35,7 @@
                      <% else %>
                         <p class="text-secondary ">販売停止中</p>
                      <% end %>
-                </td>     
+                </td>
             </tr>
      　　　　 </table>
      　　　　 <%= link_to '編集する', edit_admin_item_path(@item.id), class: 'btn btn-success' %>

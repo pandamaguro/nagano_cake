@@ -1,10 +1,6 @@
 module Public::CartItemsHelper
-  def tax_in_price(cart_item)
-    (cart_item.item.price * 1.1).to_i
-  end
-
   def subtotal(cart_item)
-    tax_in_price(cart_item) * cart_item.count
+    cart_item.item.tax_in_price * cart_item.count
   end
 
   def total_price(cart_items)

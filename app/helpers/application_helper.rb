@@ -2,26 +2,22 @@ module ApplicationHelper
   def full_name(customer)
     customer.last_name + customer.first_name
   end
-  
+
   def kana_full_name(customer)
     customer.kana_last_name + customer.kana_first_name
   end
-  
+
   def full_address(key)
     "#{key.postal_code}#{key.address}"
   end
-  
+
   def current_cart
     @cart_items = current_customer.cart_items
-  end
-  
-  def tax_price(price)
-    (price * 1.1).floor
   end
 
   # 小計の計算
   def sub_price(sub)
-    (tax_price(sub.item.price) * sub.count)
+    sub.item.tax_in_price * sub.count
   end
 
   # 合計金額の計算
@@ -32,8 +28,8 @@ module ApplicationHelper
     end
     return price
   end
-  
-  
+
+
   def billing(order)
     total_price(current_cart) + order.shipping_cost
   end
@@ -47,5 +43,5 @@ module ApplicationHelper
 	    base + "/" + "#{title}"
 	  end
 	end
-	
+
 end

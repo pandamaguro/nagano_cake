@@ -8,7 +8,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find_by(params[:id])
+    @order = Order.find(params[:id])
     @order_details = @order.order_details
   end
 
@@ -58,12 +58,12 @@ class Public::OrdersController < ApplicationController
   def create
     @order = current_customer.orders.new(order_params)
     @order.save
-    
+
     # 情報入力に新規配送先があれば保存
     if params[:order][:ship] =="1"
       current_customer.address.create(address_params)
     end
-    
+
        # カート商品の情報を注文履歴に移動させる
     @cart_items = current_customer.cart_items
     @cart_items.each do |cart_item|
@@ -71,12 +71,12 @@ class Public::OrdersController < ApplicationController
       @order_detail.item_id = cart_item.item_id
       @order_detail.order_id = @order.id
       @order_detail.count = cart_item.count
-      @order_detail.price = cart_item.item.price
+      @order_detail.price = cart_item.item.price * cart_item.count 
       @order_detail.save
       end
     # 最後にカートを全て削除する
     @cart_items.destroy_all
-    
+
     redirect_to thanx_orders_path
   end
 
