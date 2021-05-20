@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-xs-12">
+        <h2 class="head-line text-center title_h2">配送先編集</h2>
+
+        <%= render "layouts/error_message", resource: @address %>
+        <%= form_with(model: @address, url:address_path, local: true ,method: :patch) do |f| %>
+
+            <div class="addres col-xs-10">
+                <div class="form-group col-xs-12">
+                    <%= f.label :"郵便番号(ハイフンなし)",class: "col-xs-3 control-label" %>
+                    <%= f.text_field :postal_code ,class: "col-xs-2 form-control-static postal_code" %>
+                </div>
+
+                <div class="form-group col-xs-12">
+                    <%= f.label :"住所" ,class: "col-xs-3 control-label" %>
+                    <%= f.text_field :address ,class: "col-xs-9 form-control-static address" %>
+                </div>
+
+                <div class="form-group col-xs-12">
+                    <%= f.label :"宛名" ,class: "col-xs-3 control-label" %>
+                    <%= f.text_field :name ,class: "col-xs-4 form-control-static name" %>
+                </div>
+                <div class="form-group col-xs-12">
+                    <%= f.submit '変更内容を保存' ,class: "col-xs-2 btn btn-primary btn-lg pull-right" %>
+                </div>
+            </div>
+        <% end %>
+    </div>
+</div>
