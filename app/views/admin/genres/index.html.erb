@@ -6,9 +6,9 @@
     </div>
     <div class="row my-5">
         <div class="col">
-            <%= form_with model: @genre,url: admin_genres_path,method: :post, local: true do |f| %>
+            <%= form_with model: @genre,url: admin_genres_path,method: :post, remote: true do |f| %>
              <%= f.label :name, "ジャンル名" %>
-             <%= f.text_field :name %>
+             <%= f.text_field :name, id: "form" %>
              <%= f.submit "新規登録", class:"btn btn-success ml-4 py-1" %>
             <% end %>
         </div>
@@ -23,13 +23,8 @@
               <th></th>
             </tr>
           </thead>
-          <tbody>
-            <% @genres.each do |genre| %>
-            <tr>
-              <td><%= genre.name %></td>
-              <td><%= link_to "編集する", edit_admin_genre_path(genre), class:"btn btn-success py-0" %></td>
-            </tr>
-            <% end %>
+          <tbody  id="genre_index_new">
+            <%= render 'genre_new', genre: @genres %>
           </tbody>
         </table>
       </div>
