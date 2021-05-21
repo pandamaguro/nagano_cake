@@ -1,3 +1,4 @@
+<% provide(:title, "注文詳細") %>
 <div class="container">
   <h2 class="my-5">注文履歴詳細</h2>
   <div class="row">
@@ -5,7 +6,7 @@
       <table class="table table-borderless">
          <thead>
             <tr><th>購入者</th><td><%= full_name(@order.customer) %></td></tr>
-            <tr><th>注文日</th><td><%= @order.created_at%></td></tr>
+            <tr><th>注文日</th><td><%= @order.created_at.strftime("%Y-%m-%d %H:%M:%S")%></td></tr>
             <tr><th>配送先</th><td>〒<%= full_address(@order)%></td></tr>
             <tr><th>支払方法</th><td><%= @order.payment_method %></td></tr>
             <tr>

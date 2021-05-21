@@ -38,9 +38,9 @@ module ApplicationHelper
 	def full_title(title = "")
 	  base = "NaganoCake"
 	  if admin_signed_in?
-	    base + "/" + "(管理者用) #{title}"
+	    base + " | " + "管理者用 #{title}"
 	  else
-	    base + "/" + "#{title}"
+	    base + " | " + "#{title}"
 	  end
 	end
 
