@@ -145,5 +145,138 @@ describe '[STEP1] ユーザログイン前のテスト' do
         expect(page).to have_button '新規登録'
       end
     end
+
+    context '新規登録成功のテスト' do
+      before do
+        fill_in 'customer[first_name]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'customer[last_name]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'customer[kana_first_name]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'customer[kana_last_name]', with: Faker::Lorem.characters(number: 5)
+        fill_in 'customer[postal_code]', with: Faker::Lorem.characters(number: 7)
+        fill_in 'customer[address]', with: Faker::Lorem.characters(number: 15)
+        fill_in 'customer[phone_number]', with: Faker::Lorem.characters(number: 7)
+        fill_in 'customer[email]', with: Faker::Internet.email
+        fill_in 'customer[password]', with: 'password'
+        fill_in 'customer[password_confirmation]', with: 'password'
+      end
+
+      it '正しく新規登録される' do
+        expect { click_button '新規登録' }.to change(Customer.all, :count).by(1)
+      end
+      it '新規登録後のリダイレクト先が、新規登録できたユーザのマイページになっている' do
+        click_button '新規登録'
+        expect(current_path).to eq '/customers'
+      end
+    end
   end
+=begin
+  describe 'ユーザログイン' do
+    let(:customer) { create(:customer) }
+
+    before do
+      visit new_customer_session_path
+    end
+
+    context '表示内容の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/customers/sign_in'
+      end
+      it '「Log in」と表示される' do
+        expect(page).to have_content 'Log in'
+      end
+      it 'emailフォームが表示される' do
+        expect(page).to have_field 'customer[email]'
+      end
+      it 'passwordフォームが表示される' do
+        expect(page).to have_field 'customer[password]'
+      end
+      it 'Sign upボタンが表示される' do
+        expect(page).to have_button 'Log in'
+      end
+      it 'nameフォームは表示されない' do
+        expect(page).not_to have_field 'customer[name]'
+      end
+    end
+
+    context 'ログイン成功のテスト' do
+      before do
+        fill_in 'customer[email]', with: customer.email
+        fill_in 'customer[password]', with: customer.password
+        click_button 'Log in'
+      end
+
+      it 'ログイン後のリダイレクト先が、ログインしたユーザのはがき一覧画面になっている' do
+        expect(current_path).to eq '/hagakis'
+      end
+    end
+
+    context 'ログイン失敗のテスト' do
+      before do
+        fill_in 'customer[email]', with: ''
+        fill_in 'customer[password]', with: ''
+        click_button 'Log in'
+      end
+
+      it 'ログインに失敗し、ログイン画面にリダイレクトされる' do
+        expect(current_path).to eq '/customers/sign_in'
+      end
+    end
+  end
+
+  describe 'ヘッダーのテスト: ログインしている場合' do
+    let(:customer) { create(:customer) }
+
+    before do
+      visit new_customer_session_path
+      fill_in 'customer[email]', with: customer.email
+      fill_in 'customer[password]', with: customer.password
+      click_button 'Log in'
+    end
+
+    context 'ヘッダーの表示を確認' do
+      it 'タイトルが表示される' do
+        expect(page).to have_content 'らくらく死亡通知'
+      end
+      it 'Homeリンクが表示される: 左上から1番目のリンクが「Home」である' do
+        home_link = find_all('a')[1].native.inner_text
+        expect(home_link).to match(/home/i)
+      end
+      it 'Usersリンクが表示される: 左上から2番目のリンクが「About」である' do
+        about_link = find_all('a')[2].native.inner_text
+        expect(about_link).to match(/about/i)
+      end
+      it 'Booksリンクが表示される: 左上から3番目のリンクが「はがき一覧」である' do
+        hagakis_link = find_all('a')[3].native.inner_text
+        expect(hagakis_link).to match(/はがき一覧/i)
+      end
+      it 'log outリンクが表示される: 左上から4番目のリンクが「logout」である' do
+        logout_link = find_all('a')[4].native.inner_text
+        expect(logout_link).to match(/logout/i)
+      end
+    end
+  end
+
+  describe 'ユーザログアウトのテスト' do
+    let(:customer) { create(:customer) }
+
+    before do
+      visit new_customer_session_path
+      fill_in 'customer[email]', with: customer.email
+      fill_in 'customer[password]', with: customer.password
+      click_button 'Log in'
+      logout_link = find_all('a')[4].native.inner_text
+      logout_link = logout_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
+      click_link logout_link
+    end
+
+    context 'ログアウト機能のテスト' do
+      it '正しくログアウトできている: ログアウト後のリダイレクト先においてLog inへのリンクが存在する' do
+        expect(page).to have_link '', href: '/customers/sign_in'
+      end
+      it 'ログアウト後のリダイレクト先が、トップになっている' do
+        expect(current_path).to eq '/'
+      end
+    end
+  end
+=end
 end
