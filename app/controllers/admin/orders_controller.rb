@@ -14,7 +14,7 @@ class Admin::OrdersController < ApplicationController
     @order.update(order_params)
     flash[:notice] = "注文ステータスの変更しました"
     redirect_to admin_order_path(@order)
-    # 注文ステータスの動きに合わせて、makingも変更
+
     if @order.status == "入金確認"
       @order.order_details.each do |order_detail|
         order_detail.update(making_status: 1)

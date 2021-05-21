@@ -1,34 +1,33 @@
+<% provide(:title, "商品詳細") %>
 <div class="container">
-    <div class="row m-5 pl-5">
-        <h2 class="bg-light">商品詳細</h2>
-    </div>
+  <h2 class="mt-5 text-center">商品詳細</h2>
     <div class="row align-items-center m-5">
-      <div class="col">
-        <%= attachment_image_tag @item, :image, :size => '300x250',fallback: "no_image.jpg" %>
+      <div class="col-lg text-center mb-5">
+        <%= attachment_image_tag @item, :image, :size => '300x250'%>
       </div>
-      <div class="col ">
+      <div class="col-lg">
           <table class="table">
             <tr>
-              <th><%= "商品名" %></th>
+              <th>商品名</th>
               <td><%= @item.name %></td>
             </tr>
             <tr>
-              <th><%= "商品説明" %></th>
+              <th>商品説明</th>
               <td><%= @item.introduction %></td>
             </tr>
             <tr>
-              <th><%= "ジャンル" %></th>
+              <th>ジャンル</th>
               <td><%= @item.genre.name %></td>
             </tr>
             <tr>
               <th>
-                  <%= "税込価格" %><br>
-                  <%= "(税抜価格)" %>
+                  税込価格<br>
+                  (税抜き価格)
               </th>
               <td><%= @item.tax_in_price %> (<%= @item.price %>) 円</td>
             </tr>
             <tr>
-              <th><%= "販売ステータス" %></th>
+              <th>販売ステータス</th>
                 <td>
                      <% if @item.is_active == true %>
                         <p class="text-success ">販売中</p>
@@ -37,8 +36,11 @@
                      <% end %>
                 </td>
             </tr>
-     　　　　 </table>
-     　　　　 <%= link_to '編集する', edit_admin_item_path(@item.id), class: 'btn btn-success' %>
+          </table>
+          <div class="d-flex justify-content-around">
+            <p><%= link_to '編集する', edit_admin_item_path(@item.id), class: 'btn btn-success' %></p>
+            <p><%= link_to "商品一覧へ戻る", admin_items_path, class:"btn btn-outline-secondary"%></p>
+          </div>
    　　 </div>
   　</div>
  </div>

@@ -1,11 +1,12 @@
+<% provide(:title, "商品") %>
 <div class="container">
     <div class="row">
         <div class="col-sm-8 px-sm-0 offset-sm-1">
-            <h2>商品一覧</h2>
+            <h2 class="my-5">商品一覧</h2>
         </div>
-        <div class="col-sm-2 px-sm-0 text-right mb-2">
-            <%= link_to new_admin_item_path,class:"btn btn--circle btn--circle-c btn--shadow" do %>
-            <i class="fas fa-plus"></i>
+        <div class="col-sm-2 px-sm-0 text-right mt-5">
+            <%= link_to new_admin_item_path,class:"btn btn btn-outline-secondary" do %>
+            <i class="fas fa-plus fa-2x "></i>
             <% end %>
         </div>
     </div>    
@@ -39,7 +40,7 @@
                         <% end %>
                     </tbody>
                 </table>
-                <%= paginate @items %>
+                <div class="d-flex justify-content-center"><%= paginate @items %></div>
             </div>
         </div>
 </div>

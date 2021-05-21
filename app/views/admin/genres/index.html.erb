@@ -1,20 +1,21 @@
+<% provide(:title, "ジャンル一覧") %>
 <div class="container">
-    <div class="row">
-        <div class="col-md-12 my-5">
+    <div class="row text-center">
+        <div class="col-md-12 mt-5">
             <h2>ジャンル一覧・追加</h2>
         </div>
     </div>
-    <div class="row my-5">
-        <div class="col">
+    <div class="row my-5 d-flex justify-content-center">
+        <div class="col-xs-12">
             <%= form_with model: @genre,url: admin_genres_path,method: :post, remote: true do |f| %>
              <%= f.label :name, "ジャンル名" %>
              <%= f.text_field :name, id: "form" %>
-             <%= f.submit "新規登録", class:"btn btn-success ml-4 py-1" %>
+             <%= f.submit "追加する", class:"btn btn-success ml-4 py-1" %>
             <% end %>
         </div>
     </div>
     
-    <div class="row my-5">
+    <div class="row my-5 justify-content-center">
       <div class="col-lg-5 mt-3">
         <table class="table">
           <thead>
