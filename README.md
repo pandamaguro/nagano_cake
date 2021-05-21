@@ -56,6 +56,14 @@ Topページ/Aboutページ
 ジャンル登録/ジャンル編集
 
 ## 📕設計書
+### ER図
+<img width="911" alt="スクリーンショット 2021-05-21 16 14 25" src="https://user-images.githubusercontent.com/80461169/119103067-b36a3280-ba55-11eb-9da3-507c141dbfe7.png">
+
+### 顧客側ルーティング
+<img width="495" alt="スクリーンショット 2021-05-21 16 11 55" src="https://user-images.githubusercontent.com/80461169/119103092-ba914080-ba55-11eb-8eed-1f49bf13f332.png">
+
+### 管理者側ルーティング
+<img width="495" alt="スクリーンショット 2021-05-21 16 10 03" src="https://user-images.githubusercontent.com/80461169/119103101-bcf39a80-ba55-11eb-8277-f40297e391bf.png">
 
 
 ## 🐼パンダマグロのメンバー🍣
