@@ -222,7 +222,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
       end
     end
   end
-=begin
+
   describe 'ヘッダーのテスト: ログインしている場合' do
     let(:customer) { create(:customer) }
 
@@ -230,32 +230,35 @@ describe '[STEP1] ユーザログイン前のテスト' do
       visit new_customer_session_path
       fill_in 'customer[email]', with: customer.email
       fill_in 'customer[password]', with: customer.password
-      click_button 'Log in'
+      click_button 'ログイン'
     end
 
     context 'ヘッダーの表示を確認' do
       it 'タイトルが表示される' do
-        expect(page).to have_content 'らくらく死亡通知'
+        expect(page).to have_content 'NaganoCAKE'
       end
-      it 'Homeリンクが表示される: 左上から1番目のリンクが「Home」である' do
-        home_link = find_all('a')[1].native.inner_text
-        expect(home_link).to match(/home/i)
+      it 'ようこそ姓名さんが表示される' do
+        expect(page).to have_content "ようこそ#{customer.last_name}#{customer.first_name}さん"
       end
-      it 'Usersリンクが表示される: 左上から2番目のリンクが「About」である' do
-        about_link = find_all('a')[2].native.inner_text
-        expect(about_link).to match(/about/i)
+      it 'マイページリンクが表示される: 左上から1番目のリンクが「マイページ」である' do
+        link = find_all('a')[1].native.inner_text
+        expect(link).to match("マイページ")
       end
-      it 'Booksリンクが表示される: 左上から3番目のリンクが「はがき一覧」である' do
-        hagakis_link = find_all('a')[3].native.inner_text
-        expect(hagakis_link).to match(/はがき一覧/i)
+      it '商品一覧リンクが表示される: 左上から2番目のリンクが「商品一覧」である' do
+        link = find_all('a')[2].native.inner_text
+        expect(link).to match("商品一覧")
       end
-      it 'log outリンクが表示される: 左上から4番目のリンクが「logout」である' do
-        logout_link = find_all('a')[4].native.inner_text
-        expect(logout_link).to match(/logout/i)
+      it 'カートリンクが表示される: 左上から3番目のリンクが「カート」である' do
+        link = find_all('a')[3].native.inner_text
+        expect(link).to match("カート")
+      end
+      it 'ログアウトリンクが表示される: 左上から4番目のリンクが「ログアウト」である' do
+        link = find_all('a')[4].native.inner_text
+        expect(link).to match("ログアウト")
       end
     end
   end
-
+=begin
   describe 'ユーザログアウトのテスト' do
     let(:customer) { create(:customer) }
 
