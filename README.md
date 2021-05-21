@@ -59,7 +59,7 @@ Topページ/Aboutページ
 
 
 ## 🐼パンダマグロのメンバー🍣
-しんや(https://github.com/orgs/pandamaguro/people/shinyarie)
-こーきち(https://github.com/orgs/pandamaguro/people/Kokichi3569)
-けんと(https://github.com/orgs/pandamaguro/people/Kokichi3569)
-とも(https://github.com/orgs/pandamaguro/people/tomofumi-run)
+[しんや](https://github.com/orgs/pandamaguro/people/shinyarie)
+[こーきち](https://github.com/orgs/pandamaguro/people/Kokichi3569)
+[けんと](https://github.com/orgs/pandamaguro/people/Kokichi3569)
+[とも](https://github.com/orgs/pandamaguro/people/tomofumi-run)
