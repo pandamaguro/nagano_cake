@@ -11,6 +11,8 @@
   </head>
 
   <body>
+    <div id="wrapper">
+      
     <%= render "layouts/header"%>
     <%= render "layouts/search"%>
     <main>
@@ -21,5 +23,7 @@
       <%= yield %>
     </main>
     <%= render "layouts/footer"%>
+    
+    </div>
   </body>
 </html>
