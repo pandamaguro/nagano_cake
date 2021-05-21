@@ -1,7 +1,7 @@
 <% provide(:title, "注文詳細") %>
 <div class="container">
-  <h2 class="my-5">注文履歴詳細</h2>
-  <div class="row">
+  <h2 class="my-5 text-center">注文履歴詳細</h2>
+  <div class="row justify-content-center">
     <div class="col-xs-12">
       <table class="table table-borderless">
          <thead>
@@ -22,7 +22,7 @@
      </table>
     </div>
   </div>
-  <div class="row">
+  <div class="row justify-content-center">
     <div class="col-xs-8">
       <table class="table table-bordered">
         <thead class="thead-light">
@@ -59,11 +59,15 @@
           </tr>
           <tr>
             <th>商品合計</th>
-            <td>¥<%= total_price(@order.order_details)%></td>
+            <td class="text-right col-xs-5">¥<%= total_price(@order.order_details)%></td>
           </tr>
           <tr>
             <th>請求金額</th>
-            <td>¥<%= total_price(@order.order_details) + @order.shipping_cost%></td>
+            <td class="text-right col-xs-5">¥<%= total_price(@order.order_details) + @order.shipping_cost%></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td class="text-right col-xs-5"><%= link_to "注文履歴へ戻る", admin_orders_path, class:"btn btn-outline-secondary"%></td>
           </tr>
       </table>
       </div>
