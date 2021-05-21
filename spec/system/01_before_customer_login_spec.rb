@@ -36,7 +36,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
       end
       it 'Aboutリンクが表示される: 左上から1番目のリンクが「About」である' do
         about_link = find_all('a')[1].native.inner_text
-        expect(about_link).to match("about")
+        expect(about_link).to match("About")
       end
       it '商品一覧リンクが表示される: 左上から2番目のリンクが「商品一覧」である' do
         index_link = find_all('a')[2].native.inner_text
