@@ -1,0 +1,6 @@
+<%= form_with url:admin_items_path do |f| %>
+  <div class="d-flex justify-content-end mt-3 mr-5">
+    <%= f.text_field :search, placeholder: "\uf002 Search", class: "fa" %>
+    <%= f.submit "検索", class:"btn btn-outline-secondary ml-2"%>
+  </div>
+<% end %>
