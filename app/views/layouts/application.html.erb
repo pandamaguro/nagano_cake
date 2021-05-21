@@ -3,7 +3,6 @@
   <head>
     <title><%= full_title(yield :title) %></title>
     <%= favicon_link_tag 'favicon.jpeg' %>
-    
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -13,6 +12,7 @@
 
   <body>
     <%= render "layouts/header"%>
+    <%= render "layouts/search"%>
     <main>
       <div class="container">
       <div id="flash">
