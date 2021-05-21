@@ -258,7 +258,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
       end
     end
   end
-=begin
+
   describe 'ユーザログアウトのテスト' do
     let(:customer) { create(:customer) }
 
@@ -266,14 +266,14 @@ describe '[STEP1] ユーザログイン前のテスト' do
       visit new_customer_session_path
       fill_in 'customer[email]', with: customer.email
       fill_in 'customer[password]', with: customer.password
-      click_button 'Log in'
+      click_button 'ログイン'
       logout_link = find_all('a')[4].native.inner_text
       logout_link = logout_link.gsub(/\n/, '').gsub(/\A\s*/, '').gsub(/\s*\Z/, '')
       click_link logout_link
     end
 
     context 'ログアウト機能のテスト' do
-      it '正しくログアウトできている: ログアウト後のリダイレクト先においてLog inへのリンクが存在する' do
+      it '正しくログアウトできている: ログアウト後のリダイレクト先においてログインへのリンクが存在する' do
         expect(page).to have_link '', href: '/customers/sign_in'
       end
       it 'ログアウト後のリダイレクト先が、トップになっている' do
@@ -281,5 +281,4 @@ describe '[STEP1] ユーザログイン前のテスト' do
       end
     end
   end
-=end
 end
