@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe '[STEP1] ユーザログイン前のテスト' do
+describe '顧客ログインのテスト' do
   describe 'トップ画面のテスト' do
     before do
       visit root_path
