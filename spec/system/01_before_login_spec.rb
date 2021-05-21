@@ -99,5 +99,51 @@ describe '[STEP1] ユーザログイン前のテスト' do
     end
   end
 
+  describe 'ユーザ新規登録のテスト' do
+    before do
+      visit new_customer_registration_path
+    end
 
+    context '表示内容の確認' do
+      it 'URLが正しい' do
+        expect(current_path).to eq '/customers/sign_up'
+      end
+      it '「新規登録」と表示される' do
+        expect(page).to have_content '新規登録'
+      end
+      it 'first_nameフォームが表示される' do
+        expect(page).to have_field 'customer[first_name]'
+      end
+      it 'last_nameフォームが表示される' do
+        expect(page).to have_field 'customer[last_name]'
+      end
+      it 'kana_first_nameフォームが表示される' do
+        expect(page).to have_field 'customer[kana_first_name]'
+      end
+      it 'kana_last_nameフォームが表示される' do
+        expect(page).to have_field 'customer[kana_last_name]'
+      end
+      it 'emailフォームが表示される' do
+        expect(page).to have_field 'customer[email]'
+      end
+      it 'postal_codeフォームが表示される' do
+        expect(page).to have_field 'customer[postal_code]'
+      end
+      it 'addressフォームが表示される' do
+        expect(page).to have_field 'customer[address]'
+      end
+      it 'phone_numberフォームが表示される' do
+        expect(page).to have_field 'customer[phone_number]'
+      end
+      it 'passwordフォームが表示される' do
+        expect(page).to have_field 'customer[password]'
+      end
+      it 'password_confirmationフォームが表示される' do
+        expect(page).to have_field 'customer[password_confirmation]'
+      end
+      it '新規登録ボタンが表示される' do
+        expect(page).to have_button '新規登録'
+      end
+    end
+  end
 end
