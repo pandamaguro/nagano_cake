@@ -169,7 +169,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
       end
     end
   end
-=begin
+
   describe 'ユーザログイン' do
     let(:customer) { create(:customer) }
 
@@ -181,8 +181,8 @@ describe '[STEP1] ユーザログイン前のテスト' do
       it 'URLが正しい' do
         expect(current_path).to eq '/customers/sign_in'
       end
-      it '「Log in」と表示される' do
-        expect(page).to have_content 'Log in'
+      it '「ログイン」と表示される' do
+        expect(page).to have_content 'ログイン'
       end
       it 'emailフォームが表示される' do
         expect(page).to have_field 'customer[email]'
@@ -190,8 +190,8 @@ describe '[STEP1] ユーザログイン前のテスト' do
       it 'passwordフォームが表示される' do
         expect(page).to have_field 'customer[password]'
       end
-      it 'Sign upボタンが表示される' do
-        expect(page).to have_button 'Log in'
+      it 'ログインボタンが表示される' do
+        expect(page).to have_button 'ログイン'
       end
       it 'nameフォームは表示されない' do
         expect(page).not_to have_field 'customer[name]'
@@ -202,11 +202,11 @@ describe '[STEP1] ユーザログイン前のテスト' do
       before do
         fill_in 'customer[email]', with: customer.email
         fill_in 'customer[password]', with: customer.password
-        click_button 'Log in'
+        click_button 'ログイン'
       end
 
-      it 'ログイン後のリダイレクト先が、ログインしたユーザのはがき一覧画面になっている' do
-        expect(current_path).to eq '/hagakis'
+      it 'ログイン後のリダイレクト先が、ログインしたユーザのマイページになっている' do
+        expect(current_path).to eq '/customers'
       end
     end
 
@@ -214,7 +214,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
       before do
         fill_in 'customer[email]', with: ''
         fill_in 'customer[password]', with: ''
-        click_button 'Log in'
+        click_button 'ログイン'
       end
 
       it 'ログインに失敗し、ログイン画面にリダイレクトされる' do
@@ -222,7 +222,7 @@ describe '[STEP1] ユーザログイン前のテスト' do
       end
     end
   end
-
+=begin
   describe 'ヘッダーのテスト: ログインしている場合' do
     let(:customer) { create(:customer) }
 
