@@ -1,64 +1,67 @@
 <header class="shadow-sm">
   <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="container">
+    <div class="col-lg-2">
       <% if admin_signed_in? %>
         <%= link_to "NaganoCAKE", admin_orders_path, class:"header-title"%>
       <% else %>
         <%= link_to "NaganoCAKE", root_path, class:"header-title"%>
       <% end %>
     </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>    
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav ml-auto">
-       <% if customer_signed_in? %>
-        <li class="nav-item">
-         <span class="nav-link text-dark">ようこそ<%= full_name(current_customer)%>さん</span>
-        </li>
-        <li class="nav-item">
-          <%= link_to "マイページ", customers_path(current_customer), class: 'nav-link text-dark'%>
-        </li>
-        <li class="nav-item">
-          <%= link_to "商品一覧", items_path,class: 'nav-link text-dark'%>
-        </li>
-        <li class="nav-item">
-          <%= link_to "カート",cart_items_path,class: 'nav-link text-dark'%>
-        </li>
-        <li class="nav-item">
-          <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'nav-link text-dark'%>
-        </li>
-       <% elsif admin_signed_in? %>
+    <div class="col-lg-10">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>    
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ml-auto">
+         <% if customer_signed_in? %>
+          <li class="nav-item">
+           <span class="nav-link text-dark">ようこそ<%= full_name(current_customer)%>さん</span>
+          </li>
+          <li class="nav-item">
+            <%= link_to "マイページ", customers_path(current_customer), class: "btn btn-outline-secondary mx-3 my-1"%>
+          </li>
+          <li class="nav-item ">
+            <%= link_to "商品一覧", items_path,class: 'btn btn-outline-secondary mx-3 my-1'%>
+          </li>
+          <li class="nav-item">
+            <%= link_to "カート",cart_items_path,class: 'btn btn-outline-secondary mx-3 my-1'%>
+          </li>
+          <li class="nav-item">
+            <%= link_to "ログアウト", destroy_customer_session_path, method: :delete,class: 'btn btn-outline-secondary mx-3 my-1'%>
+          </li>
+         <% elsif admin_signed_in? %>
+           <li class="nav-item">
+             <%= link_to "商品一覧", admin_items_path,class: 'btn btn-outline-secondary mx-3 my-1' %>
+           </li>
+           <li class="nav-item">
+             <%= link_to "会員一覧", admin_customers_path, class:'btn btn-outline-secondary mx-3 my-1'%>
+           </li>
+           <li class="nav-item">
+             <%= link_to "注文履歴一覧", admin_orders_path, class:'btn btn-outline-secondary mx-3 my-1'%>
+           </li>         
+           <li class="nav-item">
+             <%= link_to "ジャンル一覧", admin_genres_path,class: 'btn btn-outline-secondary mx-3 my-1'%>
+           </li>
+           <li class="nav-item">
+             <%= link_to "ログアウト",destroy_admin_session_path, method: :delete,class: 'btn btn-outline-secondary mx-3 my-1'%>
+           </li>
+         <% else %>
          <li class="nav-item">
-           <%= link_to "商品一覧", admin_items_path,class: 'nav-link text-dark' %>
-         </li>
-         <li class="nav-item">
-           <%= link_to "会員一覧", admin_customers_path, class:'nav-link text-dark'%>
-         </li>
-         <li class="nav-item">
-           <%= link_to "注文履歴一覧", admin_orders_path, class:'nav-link text-dark'%>
-         </li>         
-         <li class="nav-item">
-           <%= link_to "ジャンル一覧", admin_genres_path,class: 'nav-link text-dark'%>
-         </li>
-         <li class="nav-item">
-           <%= link_to "ログアウト",destroy_admin_session_path, method: :delete,class: 'nav-link text-dark'%>
-         </li>
-       <% else %>
-       <li class="nav-item">
-           <%= link_to "About", about_path,class: 'nav-link text-dark' %>
-         </li>
-         <li class="nav-item">
-           <%= link_to "商品一覧", items_path,class: 'nav-link text-dark' %>
-         </li>
-         <li class="nav-item">
-           <%= link_to "新規登録", new_customer_registration_path,class: 'nav-link text-dark'%>
-         </li>
-         <li class="nav-item">
-           <%= link_to "ログイン", new_customer_session_path,class: 'nav-link text-dark'%>
-         </li>
-        <% end %>
-      </ul>
+             <%= link_to "about", about_path,class: 'btn btn-outline-secondary mx-3 my-1' %>
+           </li>
+           <li class="nav-item">
+             <%= link_to "商品一覧", items_path,class: 'btn btn-outline-secondary mx-3 my-1' %>
+           </li>
+           <li class="nav-item">
+             <%= link_to "新規登録", new_customer_registration_path,class: 'btn btn-outline-secondary mx-3 my-1'%>
+           </li>
+           <li class="nav-item">
+             <%= link_to "ログイン", new_customer_session_path,class: 'btn btn-outline-secondary mx-3 my-1'%>
+           </li>
+          <% end %>
+        </ul>
+      </div>
+      
     </div>
  </nav>
 </header>
