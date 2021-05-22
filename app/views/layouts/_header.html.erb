@@ -1,14 +1,14 @@
 <header class="shadow-sm">
   <nav class="navbar navbar-expand-lg navbar-light">
-    <div class="col-xl-4">
+    <div class="col-lg-2">
       <% if admin_signed_in? %>
         <%= link_to "NaganoCAKE", admin_orders_path, class:"header-title"%>
       <% else %>
         <%= link_to "NaganoCAKE", root_path, class:"header-title"%>
       <% end %>
     </div>
-    <div class="col-xl-8">
-      <button class="navbar-toggler mx-3 my-1" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <div class="col-lg-10">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>    
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
