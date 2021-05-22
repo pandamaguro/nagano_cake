@@ -1,30 +1,31 @@
-  
-<div class="container">
-<h3>ログイン</h3>
-<div class="px-4 py-4">
-  <h6>会員の方はこちらからログイン</h6>
-  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="px-5 py-2">
-    <div class="row my-3">
-      <div class= "sing-in-label"><%= f.label :"メールアドレス" %></div>
-      <div class= "sing-in-input"><%= f.email_field :email, autofocus: true, autocomplete: "email", :size=>"48" %></div>
-    </div>
+<div class="container my-5">
+  <div class="row">
+    <div class="col">
+      <div class="col-6 offset-3">
 
-    <div class="row my-3">
-      <div class= "sing-in-label"><%= f.label :"パスワード" %></div>
-      <div class= "sing-in-input"><%= f.password_field :password, autocomplete: "current-password", :size=>"48" %></div>
+      <h3>ログイン</h3>
+      
+        <h6 class="my-3">会員の方はこちらからログイン</h6>
+        <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+        <div class="field my-2">
+          <%= f.label :"メールアドレス" %><br />
+          <%= f.email_field :email, autofocus: true, placeholder:"例）nagano_cake@example.com", autocomplete: "email",class:"form-control" %>
+        </div>
+          <div class="field my-2">
+            <%= f.label :"パスワード" %><br />
+            <%= f.password_field :password, placeholder:"例）xxxxxx", autocomplete: "current-password",class:"form-control" %>
+          </div>
+          <div class="actions my-3 text-center">
+           
+            <%= f.submit "ログイン",class: "btn btn-primary"%>
+          </div>
+        <% end %>
+          <div>
+              <h6 class="text-center">会員登録がお済みでない⽅</h6>
+              <p class="text-center"><%= link_to "こちら", new_customer_registration_path %>からログインしてください。</p>
+          </div>
+      </div>
+      
     </div>
-    <div class="actions row my-4">
-      <div class= "sing-in-label"></div>
-      <div class= "sing-in-input"><%= f.submit "ログイン",class: "btn btn-primary"%></div>
-    </div>
-  </div>
-  <% end %>
-    <div>
-        <h6 class="pt-4">会員登録がお済みでない⽅</h6>
-        <div class="px-5 py-2"><p><%= link_to "こちら", new_customer_registration_path %>からログインしてください。</p></div>
-    </div>
-  </div>
-</div>
   </div>
 </div>
