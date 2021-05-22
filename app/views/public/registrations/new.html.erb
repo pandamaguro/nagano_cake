@@ -4,13 +4,13 @@
       <%= render "layouts/error_message", resource: resource %>
       <table>
         <tbody>
-          <div>
+          <tr>
             <th>名前</th>
             <td class="sign-up-small-cell">(姓)</td>
             <td><%= f.text_field :last_name, autofocus: true %></td>
             <td class="sign-up-small-cell">(名)</td>
             <td><%= f.text_field :first_name, autofocus: true %></td>
-         </div>
+          <tr>
           <tr>
             <th>フリガナ</th>
             <td class="sign-up-small-cell">(セイ)</td>
