@@ -2,6 +2,9 @@
 
 **長野県にある小さな洋菓子点「ながのCAKE」の商品を通販するためのECサイト**
 
+## 🎥動作GIF
+![nagano](https://user-images.githubusercontent.com/80461169/119246090-7919a600-bbb9-11eb-80b0-bf40365d15fe.gif)
+
 
 ## ❔サイト概要
 **Nagano Cake**は、昨年からInstagramを開設し、全国のお客様からご注文をいただくようになりました。そこで、Instagramのアカウントをお持ちでないお客様もご購入いただけるようなホームページを開設しました。
