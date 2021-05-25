@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
+  namespace :admin do
+    get 'search/search'
+  end
     # admin
   devise_for :admin, :controllers => {
     :sessions => 'admin/sessions',
     :registrations => 'admin/registrations',
   }
   namespace :admin do
+  	get '/search'=>'search#search'
     resources :customers,only: [:index,:show,:edit,:update]
   	resources :items,only: [:index,:new,:create,:show,:edit,:update,]
-  # 	get 'top'=>'homes#top'
   	resources :genres,only: [:index,:create,:edit,:update, :show]
   	resources :orders,only: [:index,:show,:update] do
   	  member do

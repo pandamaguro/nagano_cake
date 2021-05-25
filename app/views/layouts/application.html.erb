@@ -13,7 +13,9 @@
 
   <body>
     <%= render "layouts/header"%>
-             <%= render "layouts/search"%>
+    <% if admin_signed_in?%>
+    <%= render "layouts/search"%>
+    <% end %>
     <main>
       <div class="container">
       <div id="flash">

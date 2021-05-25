@@ -17,6 +17,28 @@ class Customer < ApplicationRecord
   validates :phone_number, presence: true
   validates :email, uniqueness: true
   
+  def self.search_for(content,method)
+    return none if content.blank?
+     if method == 'forward'
+      # カラムが2つの部分を1つに補う
+       f_customer = Customer.where('first_name LIKE ?',content + '%')
+       l_customer = Customer.where('last_name LIKE ?',content + '%')
+       
+       customers = f_customer + l_customer
+     elsif method == 'backword'
+       Customer.where('first_name LIKE ?', '%' + content)
+       f_customer = Customer.where('first_name LIKE ?', '%' + content)
+       l_customer = Customer.where('last_name LIKE ?', '%' + content)
+       
+       customers = f_customer + l_customer
+     else
+       f_customer = Customer.where('first_name LIKE ?', '%' + content + '%')
+       l_customer = Customer.where('last_name LIKE ?', '%' + content + '%')
+       
+       customers = f_customer + l_customer
+     end
+  end
+  
   # falseならtrueを返すようにしている
   def active_for_authentication?
     super && (self.is_deleted == false)
