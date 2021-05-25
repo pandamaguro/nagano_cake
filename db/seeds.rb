@@ -35,37 +35,75 @@ end
   Genre.create!(
      name: "マカロン",
   )
-
-  15.times do |n|
-    Item.create!(
-      genre_id: 1,
-      name: "いちごのショートケーキ（ホール）#{n + 1}",
-      introduction: "栃⽊県産のとちおとめを贅沢に使⽤しています。",
-      price: 2750,
-      is_active: [['販売中', true], ['販売停止', false]],
-      image: open("./app/assets/images/whole_cake.jpg")
-    )
-  end
-
-  5.times do |n|
-    Item.create!(
-      genre_id: 1,
-      name: "ガトーショコラ#{n + 1}",
-      introduction: "こだわったチョコレートを贅沢に使⽤しています。",
-      price: 800,
-      is_active: [['販売中', true], ['販売停止', false]],
-      image: open("./app/assets/images/chocolate_cake.jpg")
-    )
-  end
+  
+  Genre.create!(
+     name: "プリン",
+  )
 
   Item.create!(
     genre_id: 1,
+    name: "いちごのショートケーキ（ホール）",
+    introduction: "栃⽊県産のとちおとめを贅沢に使⽤しています。",
+    price: 2750,
+    is_active: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/whole_cake.jpg")
+  )
+
+  Item.create!(
+    genre_id: 2,
+    name: "ガトーショコラ",
+    introduction: "こだわったチョコレートを贅沢に使⽤しています。",
+    price: 800,
+    is_active: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/chocolate_cake.jpg")
+   )
+
+  Item.create!(
+    genre_id: 2,
     name: "レモンケーキ",
     introduction: "こうきちパティシエ特製のおすすめ商品です。",
     price: 900,
     is_active: [['販売中', true], ['販売停止', false]],
     image: open("./app/assets/images/lemon_cake.jpg")
   )
+  
+  Item.create!(
+    genre_id: 2,
+    name: "チーズケーキ",
+    introduction: "こうきちパティシエ特製のおすすめ商品です。",
+    price: 900,
+    is_active: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/cheeze.jpg")
+  )
+  
+  Item.create!(
+    genre_id: 2,
+    name: "シュークリーム",
+    introduction: "こうきちパティシエ特製のおすすめ商品です。",
+    price: 150,
+    is_active: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/creame.jpg")
+  )
+  
+  Item.create!(
+    genre_id: 3,
+    name: "マカロン",
+    introduction: "こうきちパティシエ特製のおすすめ商品です。",
+    price: 500,
+    is_active: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/animal.jpg")
+  )
+  
+  Item.create!(
+    genre_id: 4,
+    name: "極上プリン",
+    introduction: "こうきちパティシエ特製のおすすめ商品です。",
+    price: 500,
+    is_active: [['販売中', true], ['販売停止', false]],
+    image: open("./app/assets/images/purin.jpg")
+  )
+  
+  
 
   9.times do |n|
     Address.create!(

@@ -19,11 +19,30 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap');
 
+body,
+#wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #F5F5F5;
+}
+
+header{
+  position: fixed;
+  width: 100%;
+  z-index: 99;
+  background-color: #fff;
+}
 .header-title{
   font-family: 'Dancing Script', cursive;
   font-weight: bold;
   font-size: 25px;
   color: black;
+  margin-left: 30px;
+}
+
+main{
+  padding-top: 80px;
 }
 
 footer{
@@ -31,4 +50,11 @@ footer{
   background: #999;
   color: white;
   padding: 2rem 0;
+  margin-top: auto;
+}
+
+.nav-item {
+  font-family: "Neuzeit Office Soft Rounded", sans-serif;
+  font-weight: 700;
+  font-style: normal;
 }
