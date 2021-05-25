@@ -14,10 +14,10 @@
     <div id="wrapper">
       
     <%= render "layouts/header"%>
-    <% if admin_signed_in?%>
-    <%= render "layouts/search"%>
-    <% end %>
     <main>
+    <% if admin_signed_in?%>
+     <%= render "layouts/search"%>
+    <% end %>
       <div class="container">
       <div id="flash">
         <%= render "layouts/flash" %>

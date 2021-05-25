@@ -8,7 +8,7 @@
 
       <button class="navbar-toggler mx-5" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
-      </button>    
+      </button>
       <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
         <ul class="navbar-nav">
          <% if customer_signed_in? %>
@@ -36,7 +36,7 @@
            </li>
            <li class="nav-item">
              <%= link_to "注文履歴一覧", admin_orders_path, class:'btn btn-outline-secondary mx-3 my-1'%>
-           </li>         
+           </li>
            <li class="nav-item">
              <%= link_to "ジャンル一覧", admin_genres_path,class: 'btn btn-outline-secondary mx-3 my-1'%>
            </li>
@@ -59,6 +59,6 @@
           <% end %>
         </ul>
       </div>
-      
+
  </nav>
 </header>
