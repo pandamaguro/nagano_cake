@@ -1,0 +1,76 @@
+<% provide(:title, "注文詳細") %>
+<div class="container">
+  <h2 class="my-5 text-center">注文履歴詳細</h2>
+  <div class="row justify-content-center">
+    <div class="col-xs-12">
+      <table class="table table-borderless">
+         <thead>
+            <tr><th>購入者</th><td><%= full_name(@order.customer) %></td></tr>
+            <tr><th>注文日</th><td><%= @order.created_at.strftime("%Y-%m-%d %H:%M:%S")%></td></tr>
+            <tr><th>配送先</th><td>〒<%= full_address(@order)%></td></tr>
+            <tr><th>支払方法</th><td><%= @order.payment_method %></td></tr>
+            <tr>
+             <th>注文ステータス</th>
+              <td>
+                <%= form_with(model: @order, url: admin_order_path, method: :patch, local: true) do |f| %>
+                <%= f.select :status, Order.statuses.keys,class:"status"%>
+                <%= f.submit '更新', class:"btn btn-sm btn-success" %>
+                <% end %>
+              </td>
+           </tr>
+         </thead>
+     </table>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-xs-8">
+      <table class="table table-bordered">
+        <thead class="thead-light">
+          <tr>
+            <th>商品名</th>
+            <th>単価（税込）</th>
+            <th>数量</th>
+            <th>小計</th>
+            <th>制作ステータス</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_details.each do |order_detail|%>
+            <tr>
+              <td><p><%= order_detail.item.name%></p></td>
+              <td><p><%= order_detail.item.tax_in_price %></p></td>
+              <td><p><%= order_detail.count%></p></td>
+              <td><p><%= sub_price(order_detail)%></p></td>
+              <td>
+                <%= form_with(model: order_detail, url: admin_order_details_path(order_detail.id),method: :patch, local: true) do |f|%>
+                <%= f.select :making_status, OrderDetail.making_statuses.keys, class:"making_status"%>
+                <%= f.submit "更新", class:"btn btn-success"%>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+        </tbody>
+      </table>
+      <div class="col-xs-3 off-set-1">
+      <table class="table">
+          <tr>
+            <th>送料</th>
+            <td class="text-right col-xs-5">¥<%= @order.shipping_cost %></td>
+          </tr>
+          <tr>
+            <th>商品合計</th>
+            <td class="text-right col-xs-5">¥<%= total_price(@order.order_details)%></td>
+          </tr>
+          <tr>
+            <th>請求金額</th>
+            <td class="text-right col-xs-5">¥<%= total_price(@order.order_details) + @order.shipping_cost%></td>
+          </tr>
+          <tr>
+            <th></th>
+            <td class="text-right col-xs-5"><%= link_to "注文履歴へ戻る", admin_orders_path, class:"btn btn-outline-secondary"%></td>
+          </tr>
+      </table>
+      </div>
+    </div>
+  </div>
+</div>

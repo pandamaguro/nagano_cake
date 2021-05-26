@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 px-sm-0">
+      <h1>商品一覧</h1><h4>(全<%= @total_items.count %>件)</h4>
+    </div>
+  </div>
+  <div class="row mt-3 mb-3 text-center text-xs-center text-sm-center text-md-left">
+      <% @items.each do |item| %>
+      <div class="col-xs-10 col-sm-10 col-md-6 col-lg-3">
+       <div class="card w-100 bg-transparent border-0" style="width: 18rem;">
+        <%= link_to item_path(item.id) do %>
+          <p class="img-wrap"><%= attachment_image_tag item, :image, size: "180x130", fallback: "no_image.jpg" %></p>
+        <% end %>
+        <div class="card-body">
+          <p class="item-details item-name card-text"><%= item.name %></p>
+          <% if item.is_active == true %>
+            <p class="item-details card-text">¥<%= (item.price * 1.08).to_i.to_s(:delimited, delimiter: ',') %></p>
+          <% else %>
+            <p class="text-danger font-weight-bold card-text">売り切れ</p>
+        <% end %>
+        </div>
+      </div>
+    </div>
+      <% end %>
+  </div> 
+      <%= paginate(@items) %>
+</div>

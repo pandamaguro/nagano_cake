@@ -1,0 +1,29 @@
+<% provide(:title, "注文一覧") %>
+<div class="container">
+  <h2 class="my-5">注文履歴一覧</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>購入日時</th>
+        <th>購入者</th>
+        <th>注文個数</th>
+        <th>注文ステータス</th>
+      </tr>      
+      <tbody>
+        <% @orders.each do |order| %>
+        <tr>
+          <td>
+            <%= link_to admin_order_path(order) do%>
+              <%= order.created_at.strftime("%Y-%m-%d %H:%M:%S")%>
+            <% end %>
+          </td>
+          <td><%= full_name(order.customer)%></td>
+          <td><%= order.order_details.count%></td>
+          <td><%= order.status%></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </thead>
+  </table>
+   <div class="d-flex justify-content-center"><%= paginate(@orders)%></div>
+</div>

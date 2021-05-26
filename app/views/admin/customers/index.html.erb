@@ -1,0 +1,8 @@
+<% provide(:title, "会員情報一覧") %>
+<div class="container">
+ <h2 class="my-5">会員一覧</h2>
+  <div class="row d-flex justify-content-center">
+  <%= render 'index', customers: @customers%>
+ </div>
+ <div class="d-flex justify-content-center"><%= paginate(@customers)%></div>
+</div>

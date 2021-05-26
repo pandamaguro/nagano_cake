@@ -1,0 +1,50 @@
+<% provide(:title, "注文履歴一覧") %>
+<div calss="row">
+  <div class="col-xs-12">
+    <h2>注文履歴一覧</h2>
+      <% if @orders.present? %>
+        <table class="table table-hover table-bordered table-condensed">
+          <thead>
+            <tr>
+              <th><i class="fas fa-calendar-day"></i>注文日</th>
+              <th>配送先</th>
+              <th>注文商品</th>
+              <th>支払金額</th>
+              <th>ステータス</th>
+              <th>注文詳細</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @orders.each do |order| %>
+              <tr>
+                <td>
+    		          <%= order.created_at.strftime('%Y/%m/%d') %>
+    		        </td>
+    		        <td>
+    		          <%= order.postal_code %><br>
+    		          <%= order.address %><br>
+    		          <%= order.name %>
+    		        </td>
+    		        <td>
+    		          <% order.order_details.each do |order_detail| %>
+    		          	<%= order_detail.item.name %><br>
+    		          <% end %>
+    		        </td>
+    		        <td>
+    		          <%= order.total_payment.to_s(:delimited) %>円
+    		        </td>
+    		        <td>
+    		          <%= order.status %>
+    		        </td>
+         	      <td>
+       	          <%= link_to "注文詳細", order_path(order), class: "btn btn-success" %>
+       	        </td>
+              </tr>
+              <% end %>
+          </tbody>
+        </table>
+      <% else %>
+        <p>注文履歴がありません。</p>
+      <% end %>
+    </div>
+</div>

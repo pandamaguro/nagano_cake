@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>NaganoCake</title>
+    <title><%= full_title(yield :title) %></title>
+    <%= favicon_link_tag 'favicon.jpeg' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -10,10 +11,21 @@
   </head>
 
   <body>
+    <div id="wrapper">
+      
     <%= render "layouts/header"%>
     <main>
+    <% if admin_signed_in?%>
+      <%= render "layouts/search"%>
+    <% end %>
+      <div class="container">
+      <div id="flash">
+        <%= render "layouts/flash" %>
+      </div>
       <%= yield %>
     </main>
-    <footer></footer>
+    <%= render "layouts/footer"%>
+    
+    </div>
   </body>
 </html>

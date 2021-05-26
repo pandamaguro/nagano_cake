@@ -1,0 +1,8 @@
+<%= form_with url: admin_search_path, method: :get, local: true do |f| %>
+  <div class="d-flex justify-content-end mt-3 mr-5">
+    <%= f.text_field :content, placeholder: "\uf002 Search", class: "fa" %>
+    <%= f.select :model, options_for_select({"Customer" => "customer","Item" => "item"})%>
+    <%= f.select :method, options_for_select({"前方一致" => "forward", "後方一致" => "backword", "部分一致" => "patial"})%>
+    <%= f.submit "検索", class:"btn btn-outline-secondary ml-2"%>
+  </div>
+<% end %>
